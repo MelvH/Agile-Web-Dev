@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fickle</title>
+
+    <style>
+      .green {
+        background-color: green;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      #press {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: auto;
+      }
+    </style>
+  </head>
+
+  <body class="green">
+      <h1 style="text-align: center">Fickle</h1>
+
+      <button id="press" onclick="changeColor()" onmouseover="changeText()" onfocus="changeText()" onmouseout="changeTextBack()" onblur="changeTextBack()">
+        <p id="button-text">Press me!</p>
+
+      </button>
+
+
+    <script>
+
+        
+      function changeText() {
+          document.getElementById("button-text").innerHTML = "Don't press me!";
+      }
+
+      function changeTextBack() {
+        document.getElementById("button-text").innerHTML = "Press me!";
+
+      }
+
+      function changeColor() {
+          console.log('hi ')
+
+          document.body.className="red";
+          document.getElementById("button-text").innerHTML = "WHAT HAVE YOU DONE!";
+          document.getElementById('press').onblur='';
+          document.getElementById('press').onmouseout='';
+          document.getElementById('press').onfocus='';
+          document.getElementById('press').onmouseover='';
+      }
+    </script>
+  </body>
+</html>
