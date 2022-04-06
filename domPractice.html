@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Return first and last name from a form - w3resource</title>
+    <style>
+      body {
+        margin: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form1" onsubmit="getFormvalue()">
+      First name: <input type="text" name="fname" value="David" /><br />
+      Last name: <input type="text" name="lname" value="Beckham" /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <p id="f">hi</p>
+    <p id="l">hi</p>
+    <button onclick="changeBg()">Try me</button>
+
+    <!-- Q4 Get components of URL link -->
+    <p>
+      <a
+        id="w3r"
+        type="text/html"
+        hreflang="en-us"
+        rel="nofollow"
+        target="_self"
+        href="https://www.w3resource.com/"
+        >w3resource</a
+      >
+    </p>
+    <button onclick="getAttributes()">
+      Click here to get attributes value
+    </button>
+
+    <!-- Q5 Add Rows to Table -->
+    <table id="sampleTable" border="1">
+      <tr>
+        <td>Row1 cell1</td>
+        <td>Row1 cell2</td>
+      </tr>
+      <tr>
+        <td>Row2 cell1</td>
+        <td>Row2 cell2</td>
+      </tr>
+    </table>
+    <br />
+    <input type="button" onclick="insert_Row()" value="Insert row" />
+
+    <!-- Q6 Change Cell Value in Table -->
+    <table id="myTable" border="1">
+      <tr>
+        <td>Row1 cell1</td>
+        <td>Row1 cell2</td>
+      </tr>
+      <tr>
+        <td>Row2 cell1</td>
+        <td>Row2 cell2</td>
+      </tr>
+      <tr>
+        <td>Row3 cell1</td>
+        <td>Row3 cell2</td>
+      </tr>
+    </table>
+    <form>
+      <input type="button" onclick="changeContent()" value="Change content" />
+    </form>
+
+    <!-- Q7 Creating Tables and Populating Cells -->
+    <table id="myNewTable" border="1"></table>
+
+    <form>
+      <input type="button" onclick="createTable()" value="Create the table" />
+    </form>
+
+    <!-- Q8 Remove Items from a drop down list -->
+    <form>
+      <select id="colorSelect">
+        <option>Red</option>
+        <option>Green</option>
+        <option>White</option>
+        <option>Black</option>
+      </select>
+      <input type="button" onclick="removecolor()" value="Select and Remove" />
+    </form>
+
+    <!-- Q9 Count and Display Items in a drop down list -->
+    <form>
+      Select your favorite Color :
+      <select id="mySelect">
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
+        <option>White</option>
+      </select>
+      <input
+        type="button"
+        onclick="getOptions()"
+        value="Count and Output all items"
+      />
+    </form>
+
+
+    <script>
+      function getFormvalue() {
+        var first = document.getElementById("form1").elements[0].value;
+        var last = document.getElementById("form1").elements[1].value;
+        //could use this: var x = document.getElementById("myForm").elements.namedItem("fname").value;
+        document.getElementById("f").innerHTML = first;
+        document.getElementById("l").innerHTML = last;
+      }
+      //   function getFormvalue() {
+      //     var x = document.getElementById("form1");
+      //     for (var i = 0; i < x.length; i++) {
+      //       if (x.elements[i].value != "Submit") {
+      //         console.log(x.elements[i].value);
+      //       }
+      //     }
+      //   }
+
+      function changeBg() {
+        document.getElementById("f").style.backgroundColor = "blue";
+      }
+      // Q4 URL components
+      function getAttributes() {
+        var u = document.getElementById("w3r").href;
+        alert("the value of the href of the link is : " + u);
+        var v = document.getElementById("w3r").hreflang;
+        alert("the value of the hreflang of the link is : " + v);
+        var w = document.getElementById("w3r").rel;
+        alert("the value of the rel of the link is : " + w);
+      }
+      // Q5 Add Row to Table
+      function insert_Row() {
+        for (i = 0; i < 10; i++) {
+          var x = document.getElementById("sampleTable").insertRow(0);
+          var y = x.insertCell(0);
+          var z = x.insertCell(1);
+          y.innerHTML = "New Cell1";
+          z.innerHTML = "New Cell2"; //this is how we change the style Can u do this with LOOPS?
+        }
+      }
+
+      document.getElementById("sampleTable").onload = insert_Row();
+
+      //Q6; CHANGEING TABLE CELL CONTENT
+      function changeContent(row, column) {
+        rn = window.prompt("input the row number", "0");
+        cn = window.prompt("input the column number", "0");
+        content = window.prompt("input the cell content");
+        var x = document.getElementById("myTable").rows[parseInt(rn)].cells;
+        x[parseInt(cn)].innerHTML = content;
+      }
+
+      //Q7; Create a Table and Populate it
+      function createTable() {
+        row = window.prompt("input the row number", "3");
+        column = window.prompt("input the column number", "3");
+        for (i = 0; i < row; i++) {
+          var newR = document.getElementById("myNewTable").insertRow(-1);
+          for (j = 0; j < column; j++) {
+            newCell = newR.insertCell(j);
+            text = "row " + i + " column " + j;
+            console.log("text " + text);
+            newCell.innerHTML = text;
+          }
+        }
+      }
+
+      //Q8; Remove items from a Drop Down List
+      function removecolor() {
+        var x = document.getElementById("colorSelect"); //retrieves forms id
+        x.remove(x.selectedIndex); //forms choice
+      }
+
+      //Q9; Count and Display the items of a drop down list in an alert window
+      function getOptions () {
+          var x = document.getElementById("mySelect");
+          l = x.length;
+        
+          alert('length: ' + l);
+          for(i = 0; i < l; i++) {
+              alert(x.options[i].text);
+          }
+
+      }
+    </script>
+  </body>
+</html>

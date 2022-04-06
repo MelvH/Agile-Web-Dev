@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=yes"
+    />
+  
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="cssLab.css" />
+    <!-- JS -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    
+
+    <script>
+        function myFunction() {
+            document.getElementById("id-test").innerHTML = "blah";
+        }
+        function myFiction() {
+            document.getElementById("id-test").innerHTML = "eductaed people say yada";
+        }
+        function changeColor() {
+            document.getElementById("main").style.backgroundColor = "red";
+        }
+    </script>
+  </head>
+
+
+  <body>
+    <section class="main-section" id="main">
+        <h1 class="hero-title">Hello this is a super cool text</h1>
+        <h1 class="hero-text"> This is a sorta cool piece of text</h1>
+        <p id="id-test"> this is specific to this parraaggrappphh</p> 
+        <button type="button" onclick="myFiction()" class="big-button">Click here</button>
+
+    </section>
+
+
+     
+    <section id="about" style="height: 100vh;">
+        <h1 class="hero-text">Hero-Text: Section Two</h1>
+        <p style="background-color: black;color: blueviolet;">This is an inline example of formatting</p>
+        <button type="button" onclick="changeColor()" class="big-button" >Click here to change</button>
+
+        <h3>Some Aircraft List Stuff</h3>
+        <ul>
+            <li style="list-style-type: disc;">ZOOOM</li>
+            <li style="list-style-type: square;">ZOOOM</li>
+            <li style="list-style-type: circile;">ZOOOM</li>
+            <li style="list-style-type: georgian;">ZOOOM</li>
+
+        </ul>
+
+
+        <!-- Table -->
+        <table border="5">
+            <tr>
+                <th class="red">Apple</th>
+                <th class="orange">orange</th>
+                <th class="red">strawberry</th>
+
+            </tr>
+        </table>
+    </section>
+
+<!--The table should have a solid red border on the outside with rounded corners
+Each cell of the table should have a top and bottom 2 pixel border, with no margin, and 3 pixels of padding at the top and bottom
+When the mouse hovers over a cell, the top and bottom border for that cell should increase to 3 pixels, and the padding at the top and bottom should decrease to 2 pixels
+When the mouse hovers over a row, the data cells in that row should change the background to grey
+The countries should include the flag as a unicode character -->
+    <section id="lab" style = "height: 100vh">
+        <h1 class="hero-text">2022 Winter Paralympics medal table</h1>
+        <div class="container-fluid">
+            <table class="para-table" style="width:100%">
+                <caption style="text-align: center;"> Hello this is a caption</caption>
+       
+                <!-- rank, country, gold, silver, bronze, total -->
+                <tr>
+                    <th style="text-align: center;"><b>rank</b></th>
+                    <th style="text-align: center;"><b>country</b></th>
+                    <th style="color:black; text-align: center;"><b>gold</b></th>
+                    <th style="color: black; text-align: center;"><b>silver</b></th>
+                    <th style="color:black; text-align:center;"><b>bronze</b></th>
+                    <th style="text-align: center;"><b>total</b></th>
+                </tr>
+                <tr>
+                    <td>blah</td>
+                    <td> &#127462</td>
+                    <td>&#127462</td>
+                    <td>blah</td>
+                    <td>blah</td>
+                    <td>blah</td>
+                </tr>
+
+
+
+
+
+
+            </table>
+        </div>
+    </section>
+
+
+
+  </body>
+</html>
+
+<!-- <html>
+  <head>
+    <style type>
+      h2+p{
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Heading 1</h1>
+    <h2>Heading 2.a</h2>
+    <h1>this is a <b>bold</b> heading</h1>
+    <p>First paragraph.</p>
+    <p>
+      Second paragraph has a <b>bold</b> and a
+      <span>span with another <b>bold</b></span
+      >.
+    </p>
+    <h2>Heading 2.b</h2>
+    <p>Third paragraph has a <b>bold</b> also.</p>
+  </body>
+</html> -->

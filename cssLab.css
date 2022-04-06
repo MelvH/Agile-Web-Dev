@@ -1,0 +1,107 @@
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+.main-section{
+    height: 100vh;
+}
+
+.hero-text {
+    color:lightcoral;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 50px;
+}
+
+#id-test {
+    color: lightseagreen;
+    font-family: serif;
+}
+
+th.red {
+    color:red;
+}
+th.orange {
+    color:orange;
+}
+.big-button {
+    background-color: lightsteelblue;
+    text-align:center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position:relative;
+    margin:auto;
+    padding: 10px;
+    width: 60%;
+}
+
+/* Table formatting */
+
+table {
+    border: 1px solid red;
+    border-radius: 10px;
+    border-collapse:separate;
+} 
+
+td, th {
+    
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin:0%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    
+}
+
+
+td:nth-child(1), th:nth-child(1) {
+    background-color: black;
+    text-align: center;
+    color:white;
+}
+td:nth-child(2),th:nth-child(2) {
+    background-color: white;
+    text-align: left;
+    color:black;
+}
+
+td:nth-child(3),th:nth-child(3) {
+    background-color: gold;
+    text-align: center;
+    color:black;
+}
+td:nth-child(4),th:nth-child(4) {
+    background-color: silver;
+    text-align: center;
+    color:black;
+}
+td:nth-child(5),th:nth-child(5) {
+    background-color:burlywood;
+    text-align: center;
+    color:black;
+}
+td:nth-child(6), th:nth-child(6) {
+    background-color:green;
+    text-align: center;
+    color:black;
+}
+
+/* Responsiveness */
+td:hover, th:hover {
+    /* background-color: purple; */
+    border-top: 10px;
+    border-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* font-size: 100px; */
+}
+
+tr:hover {
+    background-color: grey;
+}
