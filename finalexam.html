@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title> Final Exam </title>
+
+
+        <!-- All CSS styling goes here -->
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                background-color: lightgrey;
+            }
+            #title {
+                text-align: center;
+            }
+            .overview-img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+
+            .list-item {
+                font-weight: bold;
+            }
+            .my-overview {
+                margin-bottom: 100px;
+            }
+            .my-clientside {
+                margin-bottom: 100px;
+            }
+
+            .my-serverside {
+                margin-bottom: 100px;
+            }
+            /* Create two equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 50%;
+                padding: 10px;
+                height: 700px; /* Should be removed. Only for demonstration */
+            }
+            
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            
+        </style>
+
+    </head>
+    <body>
+        <h1 id="title"> Agile Web Dev: Melvin Hartley, 22722675</h1>
+        
+        <section class="my-overview">
+            <h2 id="overview">1.0 Overview</h2>
+
+            <!-- Description of application from the user's pov.  -->
+            <!-- 1. Explain how the application works -->
+            <!-- 2. Rules of the game -->
+            <!-- 3. How the user can complete the puzzle and share results -->'
+            <!-- Include screenshots -->
+
+            <p class="overview-p">
+                Our application, coined HexFlood is an interactive daily puzzle that seeks to engage its audience through a very traditional puzzle. When you first load the application, you are greeted with the homepage. In the innerworkings the application has already taken stock of how many days the game has been running for since its inception on the 1st of May 2022. It uses this calculation to not only display what ‘day’ of HexFlood it is, but also to uniquely generate a puzzle specific for this particular day. In this manner, all users of the applciation will be greeted with an identical puzzle. 
+            </p>
+            <br>
+            <p class="overview-p">
+                Following this, options are available for the user to both understand how to play, view global scores and of course play the game. 
+            </p>
+            <br>
+            <p class="overview-p">
+                The rules of the game are as follows. The user is presented a grid of hexagons each with a randomised colour (out of 4 options.) There is a ‘starting hexagon’ labelled with an arrow and 4 buttons each representing one of the four colours. Much like a flood fill algorithm, a user can select a button to change the start cell and any neighbouring cells of the same colour as the start cell to the new button colour. This process continues until all the neighbours are of the same colour and the grid is full of identically coloured hexagons. 
+            </p>
+            <img src="play.png" alt="game playing page" id="play-img" class="overview-img" style="width: 300px; height:300px;"> 
+            <br>
+            <p class="overview-p">
+                After completing a daily puzzle, much like traditional arcade games, the user is presented with the opportunity to ‘register’ their score. They do this by simply entering their name and the country they wish to represent. After this a notification will alert the user that their score has been copied to their clipboard for sharing with the following message:
+            </p>
+            <br>
+            <p class="overview-p" style="text-align: center;">
+                ⬡⬢⬡ I finished #HexFlood number 21 in 5 moves! 😊
+            </p>
+            <br>
+            <p class="overview-p">
+                After this an interactive scoreboard is available which gives users functionality such as the ability to search for criteria, sort scores in ascending or descending order and etc. 
+            </p>
+            <img src="scores.png" alt="scores page" id="score-img" class="overview-img" style="width: 300px; height:300px;"> 
+
+            <br>
+            <p class="overview-p">
+                As far as installation instructions are concerned, the game ideally will be accessible via a web address e.g https//www.hexflood.com
+                At the moment it can be run locally using the flask application execution protocol. i.e. making a virtual env. and running flask. 
+            </p>
+
+        </section>
+
+
+        <section class="my-clientside">
+
+            <!-- 1. Brief 100 word overview of client side architecture -->
+            <!-- 2. Todo list of features to add and issues to address in the cs app. -->
+            <!-- 3. Alternative presentation theme for app.  -->
+            <!-- 4. Advantages and Disadvantages of client side vs server side rendering. -->
+
+
+            <h2 id="client-side">2.0 Client-Side</h2>
+            <!-- 1. Brief Overview -->
+            <p><b>2.1 Overview of client-side architecture</b></p>
+            <p class="cs-p">
+                As previously mentioned, our application has three webpages. This includes our homepage which allowes navigation to both the game playing page and scores page as well as offering ‘how-to-play’ instructions for the game via a modal. As far as the puzzle generation is concerned, a seed is calculated based off the number of days since the inception of the game. Puzzle generation is then managed client-side with some simple javascript based off this precalculated seed. The current score as the puzzle progresses will be saved on the client side until the user chooses to register their score. This is done to minimise the amount of data transferred to and from the server improving overall efficiency. 
+
+            </p>
+
+            <!-- interactive list -->
+            <p><b>2.2 To Do list of features</b></p>
+            <ol id="todo-list">
+            </ol>
+
+            <form>
+                <input type="button" onclick="addToDoItem('todo-list','mySelect' )" value="Add a feature" />
+            </form>
+
+            <!-- Display a drop down lis of options to choose what to remove -->
+            <form>
+                Select the option number you wish to remove :
+                <select id="mySelect">
+                </select>
+                <input type="button" onclick="removeToDoItem('todo-list','mySelect' )" value="Remove a feature" />
+            </form>
+
+
+
+            <!-- 3. Alternative Theme -->
+            <br>
+            <br>
+            <p><b>2.3 Alternative presentation theme: "Colourblind accessibility"</b></p>
+            <p class="cs-p">
+                An alternative theme that we could employ could include some accessibility functions. Since our game is very colour sensitive with the hexagons, we could include a setting that changes the choices of colurs to suit the visible ranges for users with a certain type of colour blindness. This setting would be stored client-side via local storage for a particular user. We would include a dropdown menu option for this where individuals could select their form of colourblindness, Deuteranomaly, Protanomaly, Tritanomaly or Tritanopia. From this we would then change specific colours for the hexagons, for example <span style="color: red;">red</span> and <span style="color: green;">green</span>, to be <span style="color:purple">purple</span> and <span style="color: orange;">orange</span>. Additionally we could implement a font size changer to aid those who are visually impared. Similar to the dropdown for the colour blindness, there could be options <span style="font-size: large; font-weight: bold;">‘font-up’</span> or <span style="font-size: small;font-weight: bold">‘font-down’</span> that changed the size of any lettering to something comfortable for the user. 
+            </p>
+
+
+            <!-- 4. Adv Disadv for client side vs server side rendering -->
+            <br>
+            <p><b>2.4 Client Side vs Server Side Rendering</b></p>
+            <p class="cs-p"></p>
+            <div class="row">
+                <div class="column" style="background-color:rgb(200, 245, 200);">
+                  <h2>Client Side Rendering</h2>
+                  <p>Advantages</p>
+                  <ul>
+                      <li> Less taxing on the network </li>
+                        <p> Since we only need to fetch what needs to be fetched it offers much more efficient use of the network. Excellent for low bandwindth applications such as within the mobile context.</p>
+                        <p> Especially in the context of fishing data from the database</p>
+                      <li> Reusable Components </li>
+                      <p> Client side rendering allows us to reuse UI components for multiple pages without the need to request these from the server each time. Obviously this enhances page loading performance and the feel of the webapp. This will tangibly look like each new page loading quicker than multipaged server-side applications</p>
+                  </ul>
+                  <p>Disadvantages</p>
+                  <ul>
+                    <li> Poor SEO </li>
+                    <p> If all the text is generated by JS it is much more difficult for search engines to figure out what the page is about. Meaning the webpage will rank poorly in web searches.</p>
+                    <li> Load Slower </li>
+                    <p> Browser has to both load, generate and render the HTML wheras a server side application will be able to send the browser directly the HTML to render.</p>
+                </ul>
+
+                <h3> <b>Verdict</b></h3>
+                <P>Client side rendering would prove to be the ideal choice for a small game application such as the one we have developed. This is because there isnt much processing that needs to occur, it will minimise overhead costs of having a complex server and would allow for smooth gameplay. Especially when a user is conducting moves. If this component had been implemented server side, there would be a whole bunch of redundant server requests to update the game state causing major efficiency issues.</P>
+
+                </div>
+                <div class="column" style="background-color:#bbb;">
+                  <h2>Server Side Rendering</h2>
+                  <p>Advantages</p>
+                  <ul>
+                      <li> Loads faster initially </li>
+                      <p> The server does most of the heavy lifting, by generating the HTML and simply asking the browser to render it. </p>
+                      <li> Have good SEO </li>
+                      <p> Each page will have its unique URL and the search engine will be able to look at this and determine the contents of the webpage, allowing it to better optimise its search alogrithm.</p>
+                  </ul>
+                  <p>Disadvantages</p>
+                  <ul>
+                    <li> High Latency </li>
+                    <p> When there is high load, navigation between webpages which require HTML from the servers will occur much slower due to the servers doing more work to handle the load. </p>
+                    <li> Vulnerability </li>
+                    <p> Due to their complexity compared to client-side rendering, there is a bigger area for attacks on the database.</p>
+                </ul>
+                </div>
+            </div>
+    
+
+
+
+        </section>
+
+        <section class="my-serverside">
+            <h2 id="server-side">Server-Side</h2>
+            <!-- 1. Brief Overview -->
+            <p><b>3.1 Overview of server-side architecture</b></p>
+            <p class="ss-p">
+                [serverside overview]
+            </p>
+
+            <!-- 2. interactive list -->
+            <p><b>2.2 To Do list of features</b></p>
+            <ol id="server-todo-list">
+            </ol>
+
+            <form>
+                <input type="button" onclick="addToDoItem('server-todo-list','server_mySelect' )" value="Add a feature" />
+            </form>
+
+            <!-- Display a drop down lis of options to choose what to remove -->
+            <form>
+                Select the option number you wish to remove :
+                <select id="server_mySelect">
+                </select>
+                <input type="button" onclick="removeToDoItem('server-todo-list','server_mySelect' )" value="Remove a feature" />
+            </form>
+
+
+
+
+
+        
+        </section>
+        
+
+
+
+        <h2 id="software-processes">Software Processes</h2>
+
+
+        <!-- All JS code goes here -->
+        <script>
+
+            //2.Client Side Code
+            my_todoitems = [
+                "Minifying Javascript/css Files",
+                "Closing the browser will maintain the gamestate",
+                "Allowing users to play as guests (not having to register) meaning that their score will only appear on the highscore table for them. Not universally updated.",
+            ];
+            my_todoExplain = [
+                "It would be wise, when scaling up the application to combine our javascript / css files and 'minify' them. This is compresses them into file sizes which are significantly smaller which will improve responsiveness on the client-side and decrease loads on the server.",
+                "Currently, closing the browser or reloading the game playing page, resets the daily puzzle. This exploitable feature means that in essense users have 'unlimited' tries to get the best result; deploying the web app will mean some measure must be taken to prevent this like updating the gamestate as the user progresses in local storage. The page will always check local storage when it loads.",
+                "This feature would allow, users to play casually and still share their score but means that their score wont be included in the global database. Unless they choose to register.",
+            ];
+            function createTodo(id_name) {
+                // Create the to do list for the client side.
+                let my_ol = document.getElementById(id_name);
+                my_ol.number = 0;
+                for (i = 0; i < 3; i++){
+                    let li = document.createElement("li");
+                    li.innerHTML = my_todoitems[i];
+
+                    let p = document.createElement("p");
+                    p.innerHTML = my_todoExplain[i];
+                    li.appendChild(p);
+                    my_ol.number+=1;
+                    my_ol.appendChild(li);
+                }
+            }
+
+            function addToDoItem (id_name, select_name) {
+                // add a feature to the client side list
+                item = window.prompt("input a to-do item", "3");
+                desc = window.prompt("with an explaination", "4");
+
+                let my_ol = document.getElementById(id_name);
+                my_ol.number += 1;
+                console.log(my_ol.number);
+                let li = document.createElement("li");
+                li.innerHTML = item;
+                let p = document.createElement("p");
+                p.innerHTML = desc;
+                li.appendChild(p);
+                my_ol.appendChild(li);
+
+                // Update the drop down list. 
+                //num_so_far = countItems(id_name);
+
+                let select = document.getElementById(select_name);
+                let my_option = document.createElement("option");
+                my_option.innerHTML = my_ol.number;
+                console.log(my_ol.number)
+                select.appendChild(my_option);
+
+            }
+            
+            function countItems(id_name){
+                // count the number of items in a list.
+                const my_ol = document.getElementById(id_name)
+                //console.log(my_ol);
+
+                let numb = my_ol.childNodes.length;
+                //console.log("numb ", numb)
+                var i=0, itemCount =0;
+                for (var i = 0; i < numb; i++) {
+                    if (my_ol.childNodes[i].nodeName == "LI") {
+                        itemCount++;
+                    }
+                }
+                console.log("itemcount: ", itemCount);
+                return(itemCount);
+            }
+
+            function createDropDown (num_todo, select_name) {
+                // create the drop down for the removal of feature items
+                console.log("in create dropdown")
+                let select = document.getElementById(select_name);
+                for (var i=0; i < num_todo; i++) {
+                    let my_option = document.createElement("option");
+                    my_option.innerHTML = i+1; //for each list number 
+                    select.appendChild(my_option);
+                }
+            }
+
+            function removeToDoItem (id_name, select_name) {
+                // remove the identified item from the dropdown and ordered list
+                var x = document.getElementById(select_name); //retrieves forms id
+                var my_ol = document.getElementById(id_name); 
+                var string = '#'+id_name+ ' '+'li';
+                console.log('325 string ', string)
+                var items = document.querySelectorAll(string);
+                idx_to_remove = x.selectedIndex;
+                x.remove(x.selectedIndex); //forms choice
+                my_ol.removeChild(items[idx_to_remove])
+
+            }
+            // C-S code
+            csr_id_name = "todo-list";
+            document.getElementById("todo-list").onload = createTodo(csr_id_name);
+            num_todo = countItems(csr_id_name);
+            console.log(num_todo)
+            csr_select = "mySelect"
+            document.getElementById("mySelect").onload = createDropDown(num_todo, csr_select);
+
+            ssr_id_name = "server-todo-list";
+            document.getElementById("server-todo-list").onload = createTodo(ssr_id_name);
+            num_todo = countItems(ssr_id_name);
+            ssr_select = "server_mySelect"
+            document.getElementById("server_mySelect").onload = createDropDown(num_todo, ssr_select);
+
+
+
+
+
+
+        </script>
+    </body>
+
+</html>
